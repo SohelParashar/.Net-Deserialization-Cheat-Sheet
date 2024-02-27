@@ -88,10 +88,15 @@ by [@pwntester](https://twitter.com/pwntester)
 
 -[freddy-deserialization-bug-finder "Burp Extention"](https://github.com/portswigger/freddy-deserialization-bug-finder)
 
+-[Microsoft Security Advisory CVE-2023-21808: .NET Remote Code Execution Vulnerability](https://github.com/dotnet/announcements/issues/247)
 
+-[How I Get Pre-Auth Remote Code Execution (CVE-2021–42237) on One of the Vendors.](https://caesarevan23.medium.com/how-i-get-pre-auth-remote-code-execution-cve-2021-42237-on-one-of-the-vendors-f62e35cb90de)
 
+-[Analysis and explotation of 2019-10068, a Remote Command Execution in Kentico CMS <= 12.04](https://dreadlocked.github.io/2019/10/25/kentico-cms-rce/)
  
- 
+-[CVE-2021-34992 Deserialization of Untrusted Data "Orckestra C1 CMS"](https://www.zerodayinitiative.com/advisories/ZDI-21-1304/)
+
+-[]()
  
 -[insecure-deserialisation-net-poc](https://github.com/omerlh/insecure-deserialisation-net-poc)
 
@@ -100,4 +105,8 @@ by [@pwntester](https://twitter.com/pwntester)
  
  
  
- 
+ ```
+CVE-2021-26857 is an insecure deserialization vulnerability in the Unified Messaging service. Insecure deserialization is where untrusted user-controllable data is deserialized by a program. Exploiting this vulnerability gave HAFNIUM the ability to run code as SYSTEM on the Exchange server. This requires administrator permission or another vulnerability to exploit.
+```
+
+
