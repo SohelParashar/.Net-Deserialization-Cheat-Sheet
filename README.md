@@ -4,7 +4,7 @@ A cheat sheet for pentesters and researchers about deserialization vulnerabiliti
 Please, use **#.netdeser** hash tag for tweets.
 
 ##  Table of content
-- [.Net Serialization (binary)]
+- [.Net Serialization]
 	- [Overview](#overview)
 	- [Main talks & presentations & docs](#main-talks--presentations--docs)
 	- [Payload generators](#payload-generators)
@@ -19,13 +19,6 @@ Please, use **#.netdeser** hash tag for tweets.
 - [From Foxgloves Security ]
 
 ### Main talks & presentations & docs
-##### Marshalling Pickles
-by [@frohoff](https://twitter.com/frohoff) & [@gebl](https://twitter.com/gebl)
-
-- [Video](https://www.youtube.com/watch?v=KSA7vUkXGSg)
-- [Slides](https://www.slideshare.net/frohoff1/appseccali-2015-marshalling-pickles)
-- [Other stuff](https://frohoff.github.io/appseccali-marshalling-pickles/ )
-
 ##### Exploiting Deserialization Vulnerabilities in .Net
 by [@matthias_kaiser](https://twitter.com/matthias_kaiser)
 
@@ -39,6 +32,11 @@ by [@pwntester](https://twitter.com/pwntester)
 - [YsoSerial.Net](https://github.com/pwntester/ysoserial.net)
 
 ##### payload-generators
+- [ysoserial.net | A proof-of-concept tool for generating payloads that exploit unsafe .NET object deserialization.](https://github.com/pwntester/ysoserial.net)
+- [ysoserial.net v2 Branch](https://github.com/pwntester/ysoserial.net/tree/v2)
+- [Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/)
+- [Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html)
+- [heyserial by @mandiant](https://github.com/mandiant/heyserial/tree/main/payloads/dotnet)
 
 ##### Links
 	
@@ -52,23 +50,16 @@ by [@pwntester](https://twitter.com/pwntester)
 
 -[Deep Dive into .NET ViewState deserialization and its exploitation](https://swapneildash.medium.com/deep-dive-into-net-viewstate-deserialization-and-its-exploitation-54bf5b788817)
 
--[Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/)
+
 
 -[Use of Deserialisation in.NET Framework Methods and Classes by Soroush Dalili (@irsdl)](https://research.nccgroup.com/wp-content/uploads/2020/07/whitepaper-new.pdf)
 
--[Friday the 13th JSON Attacks white paper by Alvaro Muñoz & Oleksandr Mirosh](https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-JSON-Attacks-wp.pdf)
-
--[Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html)
 
 -[ASP.NET ViewState Generator](https://github.com/0xacb/viewgen)
 
--[ysoserial.net | A proof-of-concept tool for generating payloads that exploit unsafe .NET object deserialization.](https://github.com/pwntester/ysoserial.net)
-
--[ysoserial.net v2 Branch](https://github.com/pwntester/ysoserial.net/tree/v2)
-
 -[Yet Another .NET deserialization](https://medium.com/@frycos/yet-another-net-deserialization-35f6ce048df7)
 
--[heyserial by @mandiant](https://github.com/mandiant/heyserial/tree/main/payloads/dotnet)
+
 
 -[Shmoocon2022_CleanUpOnTheSerialAisle_AlyssaRahman.pdf](https://github.com/mandiant/heyserial/blob/main/Shmoocon2022_CleanUpOnTheSerialAisle_AlyssaRahman.pdf)
 
@@ -106,7 +97,10 @@ by [@pwntester](https://twitter.com/pwntester)
  
  
  ```
-CVE-2021-26857 is an insecure deserialization vulnerability in the Unified Messaging service. Insecure deserialization is where untrusted user-controllable data is deserialized by a program. Exploiting this vulnerability gave HAFNIUM the ability to run code as SYSTEM on the Exchange server. This requires administrator permission or another vulnerability to exploit.
+CVE-2021-26857 is an insecure deserialization vulnerability in the Unified Messaging service.
+Insecure deserialization is where untrusted user-controllable data is deserialized by a program.
+Exploiting this vulnerability gave HAFNIUM the ability to run code as SYSTEM on the Exchange server. 
+This requires administrator permission or another vulnerability to exploit.
 ```
 
 
