@@ -15,14 +15,14 @@ Please, use **#.netdeser** hash tag for tweets.
 ## .Net Serialization (binary)
 
 ### Overview
-- [.Net Deserialization Security FAQ]
+- [.Net Deserialization Security FAQ](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide)
 - [From Foxgloves Security ]
 
 ### Main talks & presentations & docs
 ##### Exploiting Deserialization Vulnerabilities in .Net
-by [@matthias_kaiser](https://twitter.com/matthias_kaiser)
+by [@pwntester](https://twitter.com/pwntester)
 
-- [Video](https://www.youtube.com/watch?v=VviY3O-euVQ)
+- [Video](https://www.youtube.com/watch?v=eDfGpu3iE4Q)
 
 ##### Serial Killer: Silently Pwning Your .Net Endpoints
 by [@pwntester](https://twitter.com/pwntester)
@@ -92,8 +92,8 @@ by [@pwntester](https://twitter.com/pwntester)
 -[insecure-deserialisation-net-poc](https://github.com/omerlh/insecure-deserialisation-net-poc)
 
 -[Insecure Deserialization with JSON .NET](https://medium.com/r3d-buck3t/insecure-deserialization-with-json-net-c70139af011a)
- 
- 
+
+-[BlueHat v17 || Dangerous Contents - Securing .Net Deserialization](https://www.youtube.com/watch?v=oxlD8VWWHE8)
  
  
  ```
