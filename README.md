@@ -46,7 +46,7 @@ by [@pwntester](https://twitter.com/pwntester)
 - [NetDataContractSerializer](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.netdatacontractserializer)
 - [ObjectStateFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.objectstateformatter)
 
-### LosFormatter
+## .Net Serialization LosFormatter
 
 #### CVE-2020-1147
 - [CVE Details](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2020-1147)
@@ -59,14 +59,14 @@ by [@pwntester](https://twitter.com/pwntester)
 - [RCE in SQL Server Reporting Services (SSRS)](https://www.mdsec.co.uk/2020/02/cve-2020-0618-rce-in-sql-server-reporting-services-ssrs/)
 - [Exploit](http://packetstormsecurity.com/files/156707/SQL-Server-Reporting-Services-SSRS-ViewState-Deserialization.html)
 
-### NetDataContractSerializer
+## .Net Serialization NetDataContractSerializer
 
 #### CVE-2021-42237
 - [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2021-42237)
 - [Sitecore Experience Platform Pre-Auth RCE](https://www.assetnote.io/resources/research/sitecore-experience-platform-pre-auth-rce-cve-2021-42237)
 - [Pre-Auth Remote Code Execution Medium Blog)](https://caesarevan23.medium.com/how-i-get-pre-auth-remote-code-execution-cve-2021-42237-on-one-of-the-vendors-f62e35cb90de)
 
-### ObjectStateFormatter
+## .Net Serialization ObjectStateFormatter
 
 #### CVE-2017-9822
 - [DotNetNuke Cookie Deserialization Remote Code Execution (RCE)](https://github.com/murataydemir/CVE-2017-9822)
