@@ -12,7 +12,7 @@ Please, use **#.netdeser** hash tag for tweets.
 	- [Detect](#detect)
 	- [Protection](#protection)
 
-## .Net Serialization (binary)
+## .Net Serialization (BinaryFormatter)
 
 ### Overview
 - [.Net Deserialization Security FAQ](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide)
@@ -32,11 +32,68 @@ by [@pwntester](https://twitter.com/pwntester)
 - [YsoSerial.Net](https://github.com/pwntester/ysoserial.net)
 
 ##### payload-generators
+
 - [ysoserial.net | A proof-of-concept tool for generating payloads that exploit unsafe .NET object deserialization.](https://github.com/pwntester/ysoserial.net)
 - [ysoserial.net v2 Branch](https://github.com/pwntester/ysoserial.net/tree/v2)
 - [Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/)
 - [Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html)
 - [heyserial by @mandiant](https://github.com/mandiant/heyserial/tree/main/payloads/dotnet)
+
+## Other 
+
+- [SoapFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.soap.soapformatter)
+- [LosFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.losformatter)
+- [NetDataContractSerializer](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.netdatacontractserializer)
+- [ObjectStateFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.objectstateformatter)
+
+### LosFormatter
+
+#### CVE-2020-1147
+- [CVE Details](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2020-1147)
+- [Microsoft SharePoint Remote Code Execution Vulnerability](https://threatprotect.qualys.com/2020/07/24/microsoft-sharepoint-remote-code-execution-vulnerability-cve-2020-1147/)
+- [SharePoint DataSet / DataTable Deserialization](http://packetstormsecurity.com/files/158694/SharePoint-DataSet-DataTable-Deserialization.html)
+- [Microsoft SharePoint Server 2019 Remote Code Execution](http://packetstormsecurity.com/files/158876/Microsoft-SharePoint-Server-2019-Remote-Code-Execution.html)
+
+#### CVE-2020-0618
+- [CVE Details](https://nvd.nist.gov/vuln/detail/cve-2020-0618)
+- [RCE in SQL Server Reporting Services (SSRS)](https://www.mdsec.co.uk/2020/02/cve-2020-0618-rce-in-sql-server-reporting-services-ssrs/)
+- [Exploit](http://packetstormsecurity.com/files/156707/SQL-Server-Reporting-Services-SSRS-ViewState-Deserialization.html)
+
+### NetDataContractSerializer
+
+#### CVE-2021-42237
+- [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2021-42237)
+- [Sitecore Experience Platform Pre-Auth RCE](https://www.assetnote.io/resources/research/sitecore-experience-platform-pre-auth-rce-cve-2021-42237)
+- [Pre-Auth Remote Code Execution Medium Blog)](https://caesarevan23.medium.com/how-i-get-pre-auth-remote-code-execution-cve-2021-42237-on-one-of-the-vendors-f62e35cb90de)
+
+### ObjectStateFormatter
+
+#### CVE-2017-9822
+- [DotNetNuke Cookie Deserialization Remote Code Execution (RCE)](https://github.com/murataydemir/CVE-2017-9822)
+- [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
+- [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
+- [HackerOne Report](https://hackerone.com/reports/876708)
+
+#### CVE-2018-15811
+- [CVE Details](https://www.cvedetails.com/cve/CVE-2018-15811/)
+- [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
+- [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
+
+#### CVE-2018-15812
+- [CVE Details](https://www.cvedetails.com/cve/CVE-2018-15812/)
+- [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
+- [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
+
+#### CVE-2018-18325
+- [CVE Details](https://www.cvedetails.com/cve/CVE-2018-18325)
+- [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
+- [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
+
+#### CVE-2018-18326
+- [CVE Details](https://www.cvedetails.com/cve/CVE-2018-18326)
+- [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
+- [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
+
 
 ##### Links
 	
