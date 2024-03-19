@@ -61,7 +61,8 @@ by [@pwntester](https://twitter.com/pwntester)
 - [Microsoft SharePoint Server Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2021-27076)
 
 ##### Vulnerable code For .Net Serialization BinaryFormatter
-```using System;
+```
+using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -113,12 +114,13 @@ namespace BinaryFormatterExample
 }
 ```
 ##### Secure code For .Net Serialization BinaryFormatter
-```using System;
+```
+using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace BinaryFormatterExample
+namespace SecureBinaryFormatterExample
 {
     [Serializable]
     public class Ship : ISerializable
@@ -131,7 +133,8 @@ namespace BinaryFormatterExample
         public Ship(SerializationInfo info, StreamingContext context)
         {
             // Deserialize constructor
-            Console.WriteLine("test"); // This line is for demonstration purposes
+            Console.WriteLine("Deserialization completed successfully."); // For demonstration purposes
+            // Add your custom deserialization logic here
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -148,21 +151,39 @@ namespace BinaryFormatterExample
             // Serialize
             var ship = new Ship();
             var formatter = new BinaryFormatter();
-            using (var stream = new MemoryStream())
+
+            try
             {
-                formatter.Serialize(stream, ship);
-                // The serialized data is now in the 'stream' variable
+                using (var stream = new MemoryStream())
+                {
+                    formatter.Serialize(stream, ship);
+                    // The serialized data is now in the 'stream' variable
+                }
+            }
+            catch (SerializationException ex)
+            {
+                Console.WriteLine($"Serialization error: {ex.Message}");
+                // Handle the exception appropriately (e.g., log, notify, etc.)
             }
 
             // Deserialize
-            using (var stream = new MemoryStream(/* Load your serialized data here */))
+            try
             {
-                var deserializedShip = (Ship)formatter.Deserialize(stream);
-                // Use the deserialized object
+                using (var stream = new MemoryStream(/* Load your serialized data here */))
+                {
+                    var deserializedShip = (Ship)formatter.Deserialize(stream);
+                    // Use the deserialized object
+                }
+            }
+            catch (SerializationException ex)
+            {
+                Console.WriteLine($"Deserialization error: {ex.Message}");
+                // Handle the exception appropriately (e.g., log, notify, etc.)
             }
         }
     }
 }
+
 ```
 
 ## Other 
