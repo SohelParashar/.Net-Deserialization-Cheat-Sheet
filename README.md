@@ -4,7 +4,7 @@ A cheat sheet for pentesters and researchers about deserialization vulnerabiliti
 Please, use **#.netdeser** hash tag for tweets.
 
 ##  Table of content
-- [.Net Serialization]
+- [.Net Serialization](#.Net-Serialization)
 	- [Overview](#overview)
 	- [Main talks & presentations & docs](#main-talks--presentations--docs)
 	- [Payload generators](#payload-generators)
@@ -12,7 +12,7 @@ Please, use **#.netdeser** hash tag for tweets.
 	- [Detect](#detect)
 	- [Protection](#protection)
 
-## .Net Serialization (BinaryFormatter)
+## .Net Serialization
 
 ### Overview
 - [.Net Deserialization Security FAQ](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide)
@@ -38,6 +38,28 @@ by [@pwntester](https://twitter.com/pwntester)
 - [Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/)
 - [Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html)
 - [heyserial by @mandiant](https://github.com/mandiant/heyserial/tree/main/payloads/dotnet)
+
+## .Net Serialization BinaryFormatter
+
+#### CVE-2020-25258
+- [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2020-25258)
+- [Hyland OnBase 19.x and below - Insecure Deserialization](https://seclists.org/fulldisclosure/2020/Sep/22)
+
+#### CVE-2021-29508
+- [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2021-29508)
+- [Do not use Wire - Insecure deserialization](https://github.com/asynkron/Wire/security/advisories/GHSA-hpw7-3vq3-mmv6)
+- [CA2300: Do not use insecure deserializer BinaryFormatter](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca2300?view=vs-2019)
+
+#### CVE-2023-3513
+- [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2023-3513)
+- [RazerCentralService unsafe deserialization Escalation of Privilege Vulnerability](https://starlabs.sg/advisories/23/23-3513/)
+- [Windows Online Certificate Status Protocol (OCSP) SnapIn Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-35313)
+
+#### CVE-2021-27076
+- [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2021-27076)
+- [A REPLAY-STYLE DESERIALIZATION ATTACK AGAINST SHAREPOINT](https://www.zerodayinitiative.com/blog/2021/3/17/cve-2021-27076-a-replay-style-deserialization-attack-against-sharepoint)
+- [Microsoft SharePoint Server Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2021-27076)
+
 
 ## Other 
 
