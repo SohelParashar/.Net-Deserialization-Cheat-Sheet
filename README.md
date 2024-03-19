@@ -61,7 +61,7 @@ by [@pwntester](https://twitter.com/pwntester)
 - [Microsoft SharePoint Server Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2021-27076)
 
 ##### Vulnerable code For .Net Serialization BinaryFormatter
-```
+```csharp
    Vulnerable code 
 
 using System;
