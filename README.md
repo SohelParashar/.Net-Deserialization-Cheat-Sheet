@@ -62,6 +62,36 @@ by [@pwntester](https://twitter.com/pwntester)
 
 ##### Vulnerable code For .Net Serialization BinaryFormatter
 ```
+   Vulnerable code 
+
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace BinaryFormatterExample
+{
+    [Serializable]
+    public class Ship : ISerializable
+    {
+        public Ship()
+        {
+            // Default constructor
+        }
+
+        public Ship(SerializationInfo info, StreamingContext context)
+        {
+            // Deserialize constructor
+            Console.WriteLine("Deserialization Vulnerable code."); // This line is for demonstration purposes
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Serialize method
+            // Add your serialization logic here
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -83,10 +113,43 @@ by [@pwntester](https://twitter.com/pwntester)
             }
         }
     }
+}
 
 ```
 ##### Secure code For .Net Serialization BinaryFormatter
 ```
+secure code 
+
+
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace SecureBinaryFormatterExample
+{
+    [Serializable]
+    public class Ship : ISerializable
+    {
+        public Ship()
+        {
+            // Default constructor
+        }
+
+        public Ship(SerializationInfo info, StreamingContext context)
+        {
+            // Deserialize constructor
+            Console.WriteLine("Deserialization secure code."); // For demonstration purposes
+            // Add your custom deserialization logic here
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Serialize method
+            // Add your serialization logic here
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -125,6 +188,8 @@ by [@pwntester](https://twitter.com/pwntester)
             }
         }
     }
+}
+
 
 ```
 
@@ -134,6 +199,173 @@ by [@pwntester](https://twitter.com/pwntester)
 - [LosFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.losformatter)
 - [NetDataContractSerializer](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.netdatacontractserializer)
 - [ObjectStateFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.objectstateformatter)
+
+## .Net Serialization SoapFormatter
+
+#### CVE-2022-21969
+- [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2022-21969)
+- [Microsoft Exchange Server Remote Code Execution Vulnerability](https://attackerkb.com/topics/QdE4FMzghj/cve-2022-21969/vuln-details?referrer=search)
+- [Microsoft Exchange Server Remote Code Execution...](https://github.com/advisories/GHSA-q9fp-h9j7-378r)
+
+#### CVE-2023-5914 & CVE-2023-6184 (XSS AND RCE)
+- [CVE Details](https://www.assetnote.io/resources/research/continuing-the-citrix-saga-cve-2023-5914-cve-2023-6184)
+- [CVE-2023-5914](https://support.citrix.com/article/CTX583930/citrix-session-recording-security-bulletin-for-cve20236184)
+- [CVE-2023-6184](https://support.citrix.com/article/CTX583930/citrix-session-recording-security-bulletin-for-cve20236184)
+- [Exploit with Example](https://www.assetnote.io/resources/research/continuing-the-citrix-saga-cve-2023-5914-cve-2023-6184)
+
+#### RESX and deserialization
+-[ASP. NET resource files. RESX and deserialization vulnerability research-exploit warning-the black bar safety net](https://vulners.com/myhack58/MYHACK58:62201891145)
+
+
+##### Vulnerable code For .Net Serialization SoapFormatter
+```
+Vulnerable code 
+
+
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Soap;
+
+namespace VulnerableSoapFormatterExample
+{
+    [Serializable]
+    public class Ship : ISerializable
+    {
+        public Ship()
+        {
+            // Default constructor
+        }
+
+        public Ship(SerializationInfo info, StreamingContext context)
+        {
+            // Deserialize constructor
+            Console.WriteLine("Deserialization completed successfully."); // For demonstration purposes
+            // Add your custom deserialization logic here
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Serialize method
+            // Add your serialization logic here
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Serialize
+            var ship = new Ship();
+            var formatter = new SoapFormatter();
+
+            try
+            {
+                using (var stream = new MemoryStream())
+                {
+                    formatter.Serialize(stream, ship);
+                    // The serialized data is now in the 'stream' variable
+                }
+            }
+            catch (SerializationException ex)
+            {
+                Console.WriteLine($"Serialization error: {ex.Message}");
+                // Handle the exception appropriately (e.g., log, notify, etc.)
+            }
+
+            // Deserialize
+            try
+            {
+                using (var stream = new MemoryStream(/* Load your serialized data here */))
+                {
+                    var deserializedShip = (Ship)formatter.Deserialize(stream);
+                    // Use the deserialized object
+                }
+            }
+            catch (SerializationException ex)
+            {
+                Console.WriteLine($"Deserialization error: {ex.Message}");
+                // Handle the exception appropriately (e.g., log, notify, etc.)
+            }
+        }
+    }
+}
+
+
+```
+##### Secure code For .Net Serialization SoapFormatter
+```
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Soap;
+
+namespace SecureSoapFormatterExample
+{
+    [Serializable]
+    public class Ship : ISerializable
+    {
+        public Ship()
+        {
+            // Default constructor
+        }
+
+        public Ship(SerializationInfo info, StreamingContext context)
+        {
+            // Deserialize constructor
+            Console.WriteLine("Deserialization completed successfully."); // For demonstration purposes
+            // Add your custom deserialization logic here
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Serialize method
+            // Add your serialization logic here
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Serialize
+            var ship = new Ship();
+            var formatter = new SoapFormatter();
+
+            try
+            {
+                using (var stream = new MemoryStream())
+                {
+                    formatter.Serialize(stream, ship);
+                    // The serialized data is now in the 'stream' variable
+                }
+            }
+            catch (SerializationException ex)
+            {
+                Console.WriteLine($"Serialization error: {ex.Message}");
+                // Handle the exception appropriately (e.g., log, notify, etc.)
+            }
+
+            // Deserialize
+            try
+            {
+                using (var stream = new MemoryStream(/* Load your serialized data here */))
+                {
+                    var deserializedShip = (Ship)formatter.Deserialize(stream);
+                    // Use the deserialized object
+                }
+            }
+            catch (SerializationException ex)
+            {
+                Console.WriteLine($"Deserialization error: {ex.Message}");
+                // Handle the exception appropriately (e.g., log, notify, etc.)
+            }
+        }
+    }
+}
+
+
+```
 
 ## .Net Serialization LosFormatter
 
