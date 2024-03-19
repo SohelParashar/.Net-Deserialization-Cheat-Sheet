@@ -60,6 +60,110 @@ by [@pwntester](https://twitter.com/pwntester)
 - [A REPLAY-STYLE DESERIALIZATION ATTACK AGAINST SHAREPOINT](https://www.zerodayinitiative.com/blog/2021/3/17/cve-2021-27076-a-replay-style-deserialization-attack-against-sharepoint)
 - [Microsoft SharePoint Server Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2021-27076)
 
+##### Vulnerable code For .Net Serialization BinaryFormatter
+```using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace BinaryFormatterExample
+{
+    [Serializable]
+    public class Ship : ISerializable
+    {
+        public Ship()
+        {
+            // Default constructor
+        }
+
+        public Ship(SerializationInfo info, StreamingContext context)
+        {
+            // Deserialize constructor
+            Console.WriteLine("test"); // This line is for demonstration purposes
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Serialize method
+            // Add your serialization logic here
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Serialize
+            var ship = new Ship();
+            var formatter = new BinaryFormatter();
+            using (var stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, ship);
+                // The serialized data is now in the 'stream' variable
+            }
+
+            // Deserialize
+            using (var stream = new MemoryStream(/* Load your serialized data here */))
+            {
+                var deserializedShip = (Ship)formatter.Deserialize(stream);
+                // Use the deserialized object
+            }
+        }
+    }
+}
+```
+##### Secure code For .Net Serialization BinaryFormatter
+```using System;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace BinaryFormatterExample
+{
+    [Serializable]
+    public class Ship : ISerializable
+    {
+        public Ship()
+        {
+            // Default constructor
+        }
+
+        public Ship(SerializationInfo info, StreamingContext context)
+        {
+            // Deserialize constructor
+            Console.WriteLine("test"); // This line is for demonstration purposes
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // Serialize method
+            // Add your serialization logic here
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Serialize
+            var ship = new Ship();
+            var formatter = new BinaryFormatter();
+            using (var stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, ship);
+                // The serialized data is now in the 'stream' variable
+            }
+
+            // Deserialize
+            using (var stream = new MemoryStream(/* Load your serialized data here */))
+            {
+                var deserializedShip = (Ship)formatter.Deserialize(stream);
+                // Use the deserialized object
+            }
+        }
+    }
+}
+```
 
 ## Other 
 
