@@ -62,34 +62,6 @@ by [@pwntester](https://twitter.com/pwntester)
 
 ##### Vulnerable code For .Net Serialization BinaryFormatter
 ```
-using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-
-namespace BinaryFormatterExample
-{
-    [Serializable]
-    public class Ship : ISerializable
-    {
-        public Ship()
-        {
-            // Default constructor
-        }
-
-        public Ship(SerializationInfo info, StreamingContext context)
-        {
-            // Deserialize constructor
-            Console.WriteLine("test"); // This line is for demonstration purposes
-        }
-
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            // Serialize method
-            // Add your serialization logic here
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -111,39 +83,10 @@ namespace BinaryFormatterExample
             }
         }
     }
-}
+
 ```
 ##### Secure code For .Net Serialization BinaryFormatter
 ```
-using System;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-
-namespace SecureBinaryFormatterExample
-{
-    [Serializable]
-    public class Ship : ISerializable
-    {
-        public Ship()
-        {
-            // Default constructor
-        }
-
-        public Ship(SerializationInfo info, StreamingContext context)
-        {
-            // Deserialize constructor
-            Console.WriteLine("Deserialization completed successfully."); // For demonstration purposes
-            // Add your custom deserialization logic here
-        }
-
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            // Serialize method
-            // Add your serialization logic here
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -182,7 +125,6 @@ namespace SecureBinaryFormatterExample
             }
         }
     }
-}
 
 ```
 
