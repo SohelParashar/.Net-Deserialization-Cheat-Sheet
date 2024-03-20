@@ -60,9 +60,53 @@ by [@pwntester](https://twitter.com/pwntester)
 - [A REPLAY-STYLE DESERIALIZATION ATTACK AGAINST SHAREPOINT](https://www.zerodayinitiative.com/blog/2021/3/17/cve-2021-27076-a-replay-style-deserialization-attack-against-sharepoint)
 - [Microsoft SharePoint Server Remote Code Execution Vulnerability](https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2021-27076)
 
-##### Vulnerable code For .Net Serialization BinaryFormatter
+##### Non compliant code For .Net Serialization BinaryFormatter
+```csharp
+using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
+public class Deserialization
+{
+    public void DeserializeObject(byte[] data)
+    {
+        BinaryFormatter binaryFormatter = new BinaryFormatter();
 
+        using (MemoryStream memoryStream = new MemoryStream(data))
+        {
+            object obj = binaryFormatter.Deserialize(memoryStream);
+        }
+    }
+}
+```
+
+##### Compliant code For .Net Serialization BinaryFormatter
+```csharp
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
+public class Deserialization
+{
+    public void DeserializeObject(byte[] data)
+    {
+        var settings = new JsonSerializerSettings
+        {
+            TypeNameHandling = TypeNameHandling.None
+        };
+
+        using (MemoryStream memoryStream = new MemoryStream(data))
+        {
+            using (StreamReader reader = new StreamReader(memoryStream))
+            {
+                string jsonData = reader.ReadToEnd();
+                object obj = JsonConvert.DeserializeObject(jsonData, settings);
+            }
+        }
+    }
+}
+```
 ## Other 
 
 - [SoapFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.soap.soapformatter)
