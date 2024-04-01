@@ -147,12 +147,49 @@ public class Deserialization
 - [RCE in SQL Server Reporting Services (SSRS)](https://www.mdsec.co.uk/2020/02/cve-2020-0618-rce-in-sql-server-reporting-services-ssrs/)
 - [Exploit](http://packetstormsecurity.com/files/156707/SQL-Server-Reporting-Services-SSRS-ViewState-Deserialization.html)
 
+##### Non compliant code For .Net Serialization LosFormatter
+```csharp
+using System.IO;
+using System.Web.UI;
+
+public class ExampleClass
+{
+    public object MyDeserialize(byte[] bytes)
+    {
+        LosFormatter formatter = new LosFormatter();
+        return formatter.Deserialize(new MemoryStream(bytes));
+    }
+}
+```
+
+##### Compliant code For .Net Serialization LosFormatter
+```LosFormatter is insecure and can't be made secure.```
+
+
 ## .Net Serialization NetDataContractSerializer
 
 #### CVE-2021-42237
 - [CVE Details](https://nvd.nist.gov/vuln/detail/CVE-2021-42237)
 - [Sitecore Experience Platform Pre-Auth RCE](https://www.assetnote.io/resources/research/sitecore-experience-platform-pre-auth-rce-cve-2021-42237)
 - [Pre-Auth Remote Code Execution Medium Blog)](https://caesarevan23.medium.com/how-i-get-pre-auth-remote-code-execution-cve-2021-42237-on-one-of-the-vendors-f62e35cb90de)
+
+##### Non compliant code For .Net Serialization NetDataContractSerializer
+```csharp
+using System.IO;
+using System.Runtime.Serialization;
+
+public class ExampleClass
+{
+    public object MyDeserialize(byte[] bytes)
+    {
+        NetDataContractSerializer serializer = new NetDataContractSerializer();
+        return serializer.Deserialize(new MemoryStream(bytes));
+    }
+}
+```
+
+##### Compliant code For .Net Serialization NetDataContractSerializer
+```NetDataContractSerializer is insecure and can't be made secure.```
 
 ## .Net Serialization ObjectStateFormatter
 
