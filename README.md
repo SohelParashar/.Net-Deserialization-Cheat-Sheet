@@ -219,7 +219,39 @@ public class ExampleClass
 - [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
 - [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
 
+##CA5360:Do not call dangerous methods in deserialization
+###Cause
+####Calling one of the following dangerous methods in deserialization:
 
+System.IO.Directory.Delete
+System.IO.DirectoryInfo.Delete
+System.IO.File.AppendAllLines
+System.IO.File.AppendAllText
+System.IO.File.AppendText
+System.IO.File.Copy
+System.IO.File.Delete
+System.IO.File.WriteAllBytes
+System.IO.File.WriteAllLines
+System.IO.File.WriteAllText
+System.IO.FileInfo.Delete
+System.IO.Log.LogStore.Delete
+System.Reflection.Assembly.GetLoadedModules
+System.Reflection.Assembly.Load
+System.Reflection.Assembly.LoadFrom
+System.Reflection.Assembly.LoadFile
+System.Reflection.Assembly.LoadModule
+System.Reflection.Assembly.LoadWithPartialName
+System.Reflection.Assembly.ReflectionOnlyLoad
+System.Reflection.Assembly.ReflectionOnlyLoadFrom
+System.Reflection.Assembly.UnsafeLoadFrom
+
+####All methods meets one of the following requirements could be the callback of deserialization:
+
+Marked with System.Runtime.Serialization.OnDeserializingAttribute.
+Marked with System.Runtime.Serialization.OnDeserializedAttribute.
+Implementing System.Runtime.Serialization.IDeserializationCallback.OnDeserialization.
+Implementing System.IDisposable.Dispose.
+Is a destructor.
 ##### Links
 	
 -[Serialization and Deserialization in C#](https://www.c-sharpcorner.com/article/serialization-and-deserialization-in-c-sharp/)
