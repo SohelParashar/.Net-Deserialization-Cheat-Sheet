@@ -107,6 +107,14 @@ public class Deserialization
     }
 }
 ```
+Applies to
+| Product | Versions (Obsolete) |
+| ------- | ------------- |
+| .NET  | Core 2.0, Core 2.1, Core 2.2, Core 3.0, Core 3.1, 5, 6, 7 (8, 9) |
+| .NET Framework  | 1.1, 2.0, 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
+| .NET Standard  | 2.0, 2.1 |
+
+
 ## Other 
 
 - [SoapFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.soap.soapformatter)
@@ -132,6 +140,11 @@ public class Deserialization
 
 
 ##### Vulnerable code For .Net Serialization SoapFormatter
+
+Applies to
+| Product | Versions (Obsolete) |
+| ------- | ------------- |
+| .NET Framework | 1.1, 2.0, 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
 
 
 ## .Net Serialization LosFormatter
@@ -164,7 +177,11 @@ public class ExampleClass
 
 ##### Compliant code For .Net Serialization LosFormatter
 ```LosFormatter is insecure and can't be made secure.```
-
+```
+To mitigate this vulnerability, you should avoid using LosFormatter for deserialization,
+especially with untrusted data. Instead, consider using more secure serialization formats and libraries,
+such as JSON.NET with proper validation and sanitization of input data.
+```
 
 ## .Net Serialization NetDataContractSerializer
 
@@ -190,7 +207,11 @@ public class ExampleClass
 
 ##### Compliant code For .Net Serialization NetDataContractSerializer
 ```NetDataContractSerializer is insecure and can't be made secure.```
-
+```
+To mitigate this vulnerability, you should avoid using NetDataContractSerializer for deserialization,
+especially with untrusted data.Instead, consider using more secure serialization formats and libraries,
+such as JSON.NET with proper validation and sanitization of input data.
+```
 ## .Net Serialization ObjectStateFormatter
 
 #### CVE-2017-9822
@@ -219,9 +240,32 @@ public class ExampleClass
 - [How to exploit the DotNetNuke Cookie Deserialization](https://pentest-tools.com/blog/exploit-dotnetnuke-cookie-deserialization)
 - [Exploit](http://packetstormsecurity.com/files/157080/DotNetNuke-Cookie-Deserialization-Remote-Code-Execution.html)
 
-##CA5360:Do not call dangerous methods in deserialization
-###Cause
-####Calling one of the following dangerous methods in deserialization:
+##### Non compliant code For .Net Serialization ObjectStateFormatter
+```csharp
+using System.IO;
+using System.Web.UI;
+
+public class ExampleClass
+{
+    public object MyDeserialize(byte[] bytes)
+    {
+        ObjectStateFormatter formatter = new ObjectStateFormatter();
+        return formatter.Deserialize(new MemoryStream(bytes));
+    }
+}
+
+```
+##### Compliant code For .Net Serialization NetDataContractSerializer
+```ObjectStateFormatter is insecure and can't be made secure.```
+```
+To mitigate this vulnerability, you should avoid using ObjectStateFormatter for deserialization,
+especially with untrusted data. Instead, consider using more secure serialization formats and libraries,
+such as JSON.NET with proper validation and sanitization of input data.
+```
+
+# CA5360:Do not call dangerous methods in deserialization
+## Cause
+### Calling one of the following dangerous methods in deserialization:
 
 - System.IO.Directory.Delete
 - System.IO.DirectoryInfo.Delete
@@ -245,14 +289,14 @@ public class ExampleClass
 - System.Reflection.Assembly.ReflectionOnlyLoadFrom
 - System.Reflection.Assembly.UnsafeLoadFrom
 
-####All methods meets one of the following requirements could be the callback of deserialization:
+### All methods meets one of the following requirements could be the callback of deserialization:
 
 - Marked with System.Runtime.Serialization.OnDeserializingAttribute.
 - Marked with System.Runtime.Serialization.OnDeserializedAttribute.
 - Implementing System.Runtime.Serialization.IDeserializationCallback.OnDeserialization.
 - Implementing System.IDisposable.Dispose.
 - Is a destructor.
-
+- [Link](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca5360)
 ##### Links
 	
 -[Serialization and Deserialization in C#](https://www.c-sharpcorner.com/article/serialization-and-deserialization-in-c-sharp/)
