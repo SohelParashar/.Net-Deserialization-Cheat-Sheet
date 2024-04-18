@@ -176,12 +176,16 @@ public class ExampleClass
 ```
 
 ##### Compliant code For .Net Serialization LosFormatter
-```LosFormatter is insecure and can't be made secure.```
-```
+```Note
 To mitigate this vulnerability, you should avoid using LosFormatter for deserialization,
 especially with untrusted data. Instead, consider using more secure serialization formats and libraries,
 such as JSON.NET with proper validation and sanitization of input data.
 ```
+Applies to
+| Product | Versions (Obsolete) |
+| ------- | ------------- |
+| .NET Framework | 1.1, 2.0, 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
+
 
 ## .Net Serialization NetDataContractSerializer
 
@@ -206,12 +210,18 @@ public class ExampleClass
 ```
 
 ##### Compliant code For .Net Serialization NetDataContractSerializer
-```NetDataContractSerializer is insecure and can't be made secure.```
-```
+
+```Note
 To mitigate this vulnerability, you should avoid using NetDataContractSerializer for deserialization,
 especially with untrusted data.Instead, consider using more secure serialization formats and libraries,
 such as JSON.NET with proper validation and sanitization of input data.
 ```
+Applies to
+| Product | Versions (Obsolete) |
+| ------- | ------------- |
+| .NET Framework | 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
+
+
 ## .Net Serialization ObjectStateFormatter
 
 #### CVE-2017-9822
@@ -255,13 +265,17 @@ public class ExampleClass
 }
 
 ```
-##### Compliant code For .Net Serialization NetDataContractSerializer
-```ObjectStateFormatter is insecure and can't be made secure.```
-```
+##### Compliant code For .Net Serialization ObjectStateFormatter
+```Note
 To mitigate this vulnerability, you should avoid using ObjectStateFormatter for deserialization,
 especially with untrusted data. Instead, consider using more secure serialization formats and libraries,
 such as JSON.NET with proper validation and sanitization of input data.
 ```
+Applies to
+| Product | Versions (Obsolete) |
+| ------- | ------------- |
+| .NET Framework | 2.0, 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
+
 
 # CA5360:Do not call dangerous methods in deserialization
 ## Cause
