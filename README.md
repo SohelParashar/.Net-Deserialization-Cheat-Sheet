@@ -4,11 +4,11 @@ A cheat sheet for pentesters and researchers about deserialization vulnerabiliti
 Please, use **#.netdeser** hash tag for tweets.
 
 ##  Table of content
-- [.Net Serialization](#.Net-Serialization)
-	- [Overview](#overview)
-	- [Main talks & presentations & docs](#main-talks--presentations--docs)
+- [.Net Serialization](.net-serialization)
+	- [Overview](overview)
+	- [Main talks & presentations & docs](main-talks--presentations--docs)
 	- [Payload generators](#payload-generators)
-	- [Exploits](#exploits)
+	- [Dangerous Methods in Deserialization](ca5360:do-not-call=dangerous=methods=in-deserialization)
 	- [Detect](#detect)
 	- [Protection](#protection)
 
@@ -35,8 +35,8 @@ by [@pwntester](https://twitter.com/pwntester)
 
 - [ysoserial.net | A proof-of-concept tool for generating payloads that exploit unsafe .NET object deserialization.](https://github.com/pwntester/ysoserial.net)
 - [ysoserial.net v2 Branch](https://github.com/pwntester/ysoserial.net/tree/v2)
-- [Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/)
-- [Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html)
+- [Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/), [@Soroush Dalili](https://twitter.com/irsdl)
+- [Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html), [@James Forshaw](https://twitter.com/tiraniddo)
 - [heyserial by @mandiant](https://github.com/mandiant/heyserial/tree/main/payloads/dotnet)
 
 ## .Net Serialization BinaryFormatter
