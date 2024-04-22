@@ -4,11 +4,11 @@ A cheat sheet for pentesters and researchers about deserialization vulnerabiliti
 Please, use **#.netdeser** hash tag for tweets.
 
 ##  Table of content
-- [.Net Serialization](.net-serialization)
-	- [Overview](overview)
-	- [Main talks & presentations & docs](main-talks--presentations--docs)
+- [.Net Serialization](#net-serialization)
+	- [Overview](#overview)
+	- [Main talks & presentations & docs](#main-talks--presentations--docs)
 	- [Payload generators](#payload-generators)
-	- [Dangerous Methods in Deserialization](ca5360:do-not-call=dangerous=methods=in-deserialization)
+	- [Dangerous Methods in Deserialization](#ca5360do-not-call-dangerous-methods-in-deserialization)
 	- [Detect](#detect)
 	- [Protection](#protection)
 
@@ -16,7 +16,7 @@ Please, use **#.netdeser** hash tag for tweets.
 
 ### Overview
 - [.Net Deserialization Security FAQ](https://learn.microsoft.com/en-us/dotnet/standard/serialization/binaryformatter-security-guide)
-- [From Foxgloves Security ]
+
 
 ### Main talks & presentations & docs
 ##### Exploiting Deserialization Vulnerabilities in .Net
@@ -38,6 +38,15 @@ by [@pwntester](https://twitter.com/pwntester)
 - [Exploiting Deserialisation in ASP.NET via ViewState by Soroush Dalili (@irsdl) Blog](https://soroush.me/blog/2019/04/exploiting-deserialisation-in-asp-net-via-viewstate/), [@Soroush Dalili](https://twitter.com/irsdl)
 - [Exploiting .NET Managed DCOM by James Forshaw, Project Zero](https://googleprojectzero.blogspot.com/2017/04/exploiting-net-managed-dcom.html), [@James Forshaw](https://twitter.com/tiraniddo)
 - [heyserial by @mandiant](https://github.com/mandiant/heyserial/tree/main/payloads/dotnet)
+
+
+## Deserialization risks in use of 
+- [BinaryFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=net-8.0)
+- [SoapFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.soap.soapformatter)
+- [LosFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.losformatter)
+- [NetDataContractSerializer](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.netdatacontractserializer)
+- [ObjectStateFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.objectstateformatter)
+
 
 ## .Net Serialization BinaryFormatter
 
