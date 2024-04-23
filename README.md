@@ -9,9 +9,18 @@ Please, use **#.netdeser** hash tag for tweets.
 	- [Main talks & presentations & docs](#main-talks--presentations--docs)
 	- [Payload generators](#payload-generators)
 	- [Dangerous Methods in Deserialization](#ca5360do-not-call-dangerous-methods-in-deserialization)
-	- [Detect](#detect)
-	- [Protection](#protection)
+		- [Dangerous methods in deserialization](#calling-one-of-the-following-dangerous-methods-in-deserialization)
+    		- [Methods callback of deserialization](#all-methods-meets-one-of-the-following-requirements-could-be-the-callback-of-deserialization)
+		- [.NET RCE Gadgets](#known-net-rce-gadgets)
 
+- [Deserialization risks in use of](#deserialization-risks-in-use-of)
+	- [.Net Serialization BinaryFormatter](#net-serialization-binaryformatter)
+	- [.Net Serialization SoapFormatter](#net-serialization-soapformatter)
+	- [.Net Serialization LosFormatter](#net-serialization-losformatter)
+	- [.Net Serialization NetDataContractSerializer](#net-serialization-netdatacontractserializer)
+   	- [.Net Serialization ObjectStateFormatter](#net-serialization-objectstateformatter)
+
+      
 ## .Net Serialization
 
 ### Overview
@@ -41,6 +50,7 @@ by [@pwntester](https://twitter.com/pwntester)
 
 
 ## Deserialization risks in use of 
+
 - [BinaryFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.binary.binaryformatter?view=net-8.0)
 - [SoapFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.soap.soapformatter)
 - [LosFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.losformatter)
@@ -90,6 +100,12 @@ public class Deserialization
 ```
 
 ##### Compliant code For .Net Serialization BinaryFormatter
+```Note
+Warning: BinaryFormatter is insecure and can't be made secure.
+especially with untrusted data.Instead, consider using more secure serialization formats and libraries,
+such as JSON.NET with proper validation and sanitization of input data.
+```
+##### Example with json.
 ```csharp
 using System;
 using System.IO;
@@ -123,13 +139,6 @@ Applies to
 | .NET Framework  | 1.1, 2.0, 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
 | .NET Standard  | 2.0, 2.1 |
 
-
-## Other 
-
-- [SoapFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.formatters.soap.soapformatter)
-- [LosFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.losformatter)
-- [NetDataContractSerializer](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.serialization.netdatacontractserializer)
-- [ObjectStateFormatter](https://learn.microsoft.com/en-us/dotnet/api/system.web.ui.objectstateformatter)
 
 ## .Net Serialization SoapFormatter
 
@@ -286,7 +295,7 @@ Applies to
 | .NET Framework | 2.0, 3.0, 3.5, 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2, 4.7, 4.7.1, 4.7.2, 4.8, 4.8.1 |
 
 
-# CA5360:Do not call dangerous methods in deserialization
+## CA5360:Do not call dangerous methods in deserialization
 ## Cause
 ### Calling one of the following dangerous methods in deserialization:
 
@@ -319,7 +328,25 @@ Applies to
 - Implementing System.Runtime.Serialization.IDeserializationCallback.OnDeserialization.
 - Implementing System.IDisposable.Dispose.
 - Is a destructor.
-- [Link](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca5360)
+[Link](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/ca5360)
+
+### Known .NET RCE Gadgets
+
+- System.Configuration.Install.AssemblyInstaller
+- System.Activities.Presentation.WorkflowDesigner
+- System.Windows.ResourceDictionary
+- System.Windows.Data.ObjectDataProvider
+- System.Windows.Forms.BindingSource
+- Microsoft.Exchange.Management.SystemManager.WinForms.ExchangeSettingsProvider
+- System.Data.DataViewManager, System.Xml.XmlDocument/XmlDataDocument
+- System.Management.Automation.PSObject
+
+
+## 
+## Burp Extention 
+- [Freddy, Deserialization Bug Finder](https://portswigger.net/bappstore/ae1cce0c6d6c47528b4af35faebc3ab3)
+
+### Extra but Important
 ##### Links
 	
 -[Serialization and Deserialization in C#](https://www.c-sharpcorner.com/article/serialization-and-deserialization-in-c-sharp/)
@@ -332,16 +359,11 @@ Applies to
 
 -[Deep Dive into .NET ViewState deserialization and its exploitation](https://swapneildash.medium.com/deep-dive-into-net-viewstate-deserialization-and-its-exploitation-54bf5b788817)
 
-
-
 -[Use of Deserialisation in.NET Framework Methods and Classes by Soroush Dalili (@irsdl)](https://research.nccgroup.com/wp-content/uploads/2020/07/whitepaper-new.pdf)
-
 
 -[ASP.NET ViewState Generator](https://github.com/0xacb/viewgen)
 
 -[Yet Another .NET deserialization](https://medium.com/@frycos/yet-another-net-deserialization-35f6ce048df7)
-
-
 
 -[Shmoocon2022_CleanUpOnTheSerialAisle_AlyssaRahman.pdf](https://github.com/mandiant/heyserial/blob/main/Shmoocon2022_CleanUpOnTheSerialAisle_AlyssaRahman.pdf)
 
@@ -369,16 +391,14 @@ Applies to
  
 -[CVE-2021-34992 Deserialization of Untrusted Data "Orckestra C1 CMS"](https://www.zerodayinitiative.com/advisories/ZDI-21-1304/)
 
--[]()
- 
 -[insecure-deserialisation-net-poc](https://github.com/omerlh/insecure-deserialisation-net-poc)
 
 -[Insecure Deserialization with JSON .NET](https://medium.com/r3d-buck3t/insecure-deserialization-with-json-net-c70139af011a)
 
 -[BlueHat v17 || Dangerous Contents - Securing .Net Deserialization](https://www.youtube.com/watch?v=oxlD8VWWHE8)
  
- 
- ```
+
+```Note
 CVE-2021-26857 is an insecure deserialization vulnerability in the Unified Messaging service.
 Insecure deserialization is where untrusted user-controllable data is deserialized by a program.
 Exploiting this vulnerability gave HAFNIUM the ability to run code as SYSTEM on the Exchange server. 
