@@ -10,7 +10,7 @@ Please, use **#.netdeser** hash tag for tweets.
 	- [Payload generators](#payload-generators)
 	- [Dangerous Methods in Deserialization](#ca5360do-not-call-dangerous-methods-in-deserialization)
 		- [Dangerous methods in deserialization](#calling-one-of-the-following-dangerous-methods-in-deserialization)
-    		- [Methods callback of deserialization](#all-methods-meets-one-of-the-following-requirements-could-be-the-callback-of-deserialization)
+		- [Methods callback of deserialization](#all-methods-meets-one-of-the-following-requirements-could-be-the-callback-of-deserialization)
 		- [.NET RCE Gadgets](#known-net-rce-gadgets)
 
 - [Deserialization risks in use of](#deserialization-risks-in-use-of)
