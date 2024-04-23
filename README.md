@@ -404,4 +404,4 @@ Exploiting this vulnerability gave HAFNIUM the ability to run code as SYSTEM on 
 This requires administrator permission or another vulnerability to exploit.
 ```
 
-### Thanks and Keep Committing and make it more helpful for Security Researchers and Devlopers...!
+### Thanks!!! Keep Committing and make it more helpful for Security Researchers & Devlopers...!
