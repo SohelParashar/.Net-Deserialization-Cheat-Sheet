@@ -19,7 +19,7 @@ Please, use **#.netdeser** hash tag for tweets.
 	- [.Net Serialization LosFormatter](#net-serialization-losformatter)
 	- [.Net Serialization NetDataContractSerializer](#net-serialization-netdatacontractserializer)
    	- [.Net Serialization ObjectStateFormatter](#net-serialization-objectstateformatter)
-
+- Taking Spark from [Green Dog](https://github.com/GrrrDog)
       
 ## .Net Serialization
 
@@ -342,7 +342,6 @@ Applies to
 - System.Management.Automation.PSObject
 
 
-## 
 ## Burp Extention 
 - [Freddy, Deserialization Bug Finder](https://portswigger.net/bappstore/ae1cce0c6d6c47528b4af35faebc3ab3)
 
@@ -405,4 +404,4 @@ Exploiting this vulnerability gave HAFNIUM the ability to run code as SYSTEM on 
 This requires administrator permission or another vulnerability to exploit.
 ```
 
-
+### Thanks and Keep Committing and make it more helpful for Security Researchers and Devlopers...!
