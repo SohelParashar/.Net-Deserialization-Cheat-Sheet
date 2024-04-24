@@ -1,7 +1,7 @@
 # .Net-Deserialization-Cheat-Sheet
 A cheat sheet for pentesters and researchers about deserialization vulnerabilities in various .Net serialization libraries.
 
-Please, use **#.netdeser** hash tag for tweets.
+Please, use **#dotnetdeser** hash tag for tweets.
 
 ##  Table of content
 - [.Net Serialization](#net-serialization)
